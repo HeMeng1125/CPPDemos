@@ -41,6 +41,8 @@ Sample Output
 #include <iostream>
 #include <cstdlib>
 #include <queue>
+#include <vector>
+#include <utility>
 
 //using namespace std;
 
@@ -107,13 +109,25 @@ int main() {
 	freopen("out.txt", "w", stdout);
 	while(scanf("%d %d",&n,&m)!=EOF) {
 		memset(map,0,sizeof(map));
+		std::vector<std::pair<int, int>> edges;
 		for(i=0;i<n;i++) {
 			scanf("%d %d %d",&u,&v,&cost);
+			edges.push_back(std::make_pair(u, v));
 			map[u][v]+=cost;           //not just only one input
 		}
 		start=1,end=m;
+		//print max flow
 		printf("%d\n",Edmonds_Karp());
+		//print the flow of each path
+		for (i=0;i<n;i++)
+		{
+			u=edges[i].first;
+			v=edges[i].second;
+			printf("%d %d %d\n", u, v, map[v][u]);
+		}
 	}
+	fclose(stdin);
+	fclose(stdout);
 #else
 	//ÎÄ¼þÊäÈë
 	FILE *fp = fopen("map.txt", "r");
