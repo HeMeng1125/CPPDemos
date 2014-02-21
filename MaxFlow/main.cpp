@@ -89,7 +89,7 @@ int Edmonds_Karp() {
 int main() {
 	int i,u,v,cost;
 		
-#if 1
+#if 0
 	//控制台输入
 	while(scanf("%d %d",&n,&m)!=EOF) {
 	    memset(map,0,sizeof(map));
@@ -99,6 +99,20 @@ int main() {
 	    }
 	    start=1,end=m;
 	    printf("%d\n",Edmonds_Karp());
+	}
+	system("PAUSE");
+#elif 1
+	//使用freopen
+	freopen("map.txt", "r", stdin);
+	freopen("out.txt", "w", stdout);
+	while(scanf("%d %d",&n,&m)!=EOF) {
+		memset(map,0,sizeof(map));
+		for(i=0;i<n;i++) {
+			scanf("%d %d %d",&u,&v,&cost);
+			map[u][v]+=cost;           //not just only one input
+		}
+		start=1,end=m;
+		printf("%d\n",Edmonds_Karp());
 	}
 #else
 	//文件输入
@@ -113,6 +127,6 @@ int main() {
 	start=1, end=m;
 	printf("%d\n",Edmonds_Karp());
 #endif
-	system("PAUSE");
+	
 	return 0;
 }
