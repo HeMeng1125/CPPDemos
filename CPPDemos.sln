@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OptimalAphaOrder", "Optimal
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "StringBuilderDemo", "StringBuilderDemo\StringBuilderDemo.vcxproj", "{00DCF8DA-B71B-4A8B-83DA-B517D417DD0B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MaxFlow", "MaxFlow\MaxFlow.vcxproj", "{237468D9-F4B5-4E0C-A84B-CE23C32FCB8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -45,6 +47,12 @@ Global
 		{00DCF8DA-B71B-4A8B-83DA-B517D417DD0B}.Release|Win32.ActiveCfg = Release|Win32
 		{00DCF8DA-B71B-4A8B-83DA-B517D417DD0B}.Release|Win32.Build.0 = Release|Win32
 		{00DCF8DA-B71B-4A8B-83DA-B517D417DD0B}.Release|x64.ActiveCfg = Release|Win32
+		{237468D9-F4B5-4E0C-A84B-CE23C32FCB8A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{237468D9-F4B5-4E0C-A84B-CE23C32FCB8A}.Debug|Win32.Build.0 = Debug|Win32
+		{237468D9-F4B5-4E0C-A84B-CE23C32FCB8A}.Debug|x64.ActiveCfg = Debug|Win32
+		{237468D9-F4B5-4E0C-A84B-CE23C32FCB8A}.Release|Win32.ActiveCfg = Release|Win32
+		{237468D9-F4B5-4E0C-A84B-CE23C32FCB8A}.Release|Win32.Build.0 = Release|Win32
+		{237468D9-F4B5-4E0C-A84B-CE23C32FCB8A}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
