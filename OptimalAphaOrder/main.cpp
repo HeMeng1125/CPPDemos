@@ -44,16 +44,16 @@ inversed_alphabet_t inverse_alphabet_map(alphabet_t const & alphabet)
 
 std::string alphabet_string(alphabet_t const & alphabet)
 {
-	std::string alphabet_string(alphabet.size(), ' ');
+	std::string alpha_string(alphabet.size(), ' ');
 	auto reversed = inverse_alphabet_map(alphabet);
 
 	std::transform(
 		begin(reversed), end(reversed), 
-		begin(alphabet_string),
+		begin(alpha_string),
 		[&](std::pair<int, char> const & elem) {return elem.second;}
 	);
 
-	return alphabet_string;
+	return alpha_string;
 }
 
 bool is_ordered(std::string const & word, alphabet_t const & alphabet)
