@@ -1,7 +1,7 @@
 /*
- *ÃèÊö     £º  5²ãÄ¦Ë¹ÃÜÂë¼ÓÃÜºÍ½âÃÜ
- *×÷Õß     £º  ºÎÃÍ
- *´´½¨Ê±¼ä  £º  2013/6/5
+ *æè¿°     ï¼š  5å±‚æ‘©æ–¯å¯†ç åŠ å¯†å’Œè§£å¯†
+ *ä½œè€…     ï¼š  ä½•çŒ›
+ *åˆ›å»ºæ—¶é—´  ï¼š  2013/6/5
 */
 
 #include <stdio.h>
@@ -9,7 +9,7 @@
 #include <string.h>
 #include <malloc.h>
 
-/*×ÖÄ¸µ½×ÖÄ¸µÄÓ³Éä*/
+/*å­—æ¯åˆ°å­—æ¯çš„æ˜ å°„*/
 struct map1
 {
 	char c1;
@@ -43,7 +43,7 @@ const struct map1 A_A[26]={
 	{ 'Y', 'N' },
 	{ 'Z', 'M' }	
 };
-/*×ÖÄ¸µ½Êı×ÖµÄÓ³Éä*/
+/*å­—æ¯åˆ°æ•°å­—çš„æ˜ å°„*/
 struct map2 
 {
 	char c;
@@ -108,23 +108,24 @@ int main(int argc, char *argv[])
 	char *strDst="--***/****-/--***/**---/***--/**---/***--/*----/--***/**---/---**/*----/****-/***--/-****/***--/***--/*----/-****/***--/";
 	decrypt(strDst);
 	getchar();
+	
 	return 0;
 }
 
 void encrypt(const char * s)
 {	
-	/*»ñÈ¡×Ö·û´®³¤¶È*/
+	/*è·å–å­—ç¬¦ä¸²é•¿åº¦*/
 	int len=strlen(s);
 	s += len-1;
 	
-	/*¶¯Ì¬´´½¨Á½¸ö×Ö·ûÊı×Ö*/
+	/*åŠ¨æ€åˆ›å»ºä¸¤ä¸ªå­—ç¬¦æ•°å­—*/
 	int len1=(len+1)/2;
 	int len2=len-len1;
 	char *s1=(char*)malloc(len1);
 	char *s2=(char*)malloc(len2);	
 	int i;
 	
-	/*s1¡¢s2×Ö·û´®¸³Öµ*/
+	/*s1ã€s2å­—ç¬¦ä¸²èµ‹å€¼*/
 	for(i=0;i<len1;i++)
 	{
 		*s1=en_conv1(*s);		
@@ -137,11 +138,11 @@ void encrypt(const char * s)
 		s1++;		
 	}	
 	
-	/*ÒÆµ½ÄÚ´æ¿éÊ×µØÖ·*/
+	/*ç§»åˆ°å†…å­˜å—é¦–åœ°å€*/
 	s1-=len1;
 	s2-=len2;
 	
-	char * str=(char*)malloc(2*len); /*´¿Êı×Ö×Ö·û´®*/
+	char * str=(char*)malloc(2*len); /*çº¯æ•°å­—å­—ç¬¦ä¸²*/
 	for (int i=0;i<len1;i++)
 	{
 		char *t=en_conv2(*(s1+i));
@@ -158,12 +159,12 @@ void encrypt(const char * s)
 		*(str+1)=*(t+1);
 		str+=2;
 	}
-	/*ÒÆµ½ÄÚ´æ¿éÊ×µØÖ·*/
+	/*ç§»åˆ°å†…å­˜å—é¦–åœ°å€*/
 	str-=2*len;
-	/*´òÓ¡Ä¦Ë¹ÃÜÂë*/
+	/*æ‰“å°æ‘©æ–¯å¯†ç */
 	en_display(str, 2*len);
 
-	/*ÊÍ·Å¶¯Ì¬·ÖÅäµÄÄÚ´æ*/
+	/*é‡Šæ”¾åŠ¨æ€åˆ†é…çš„å†…å­˜*/
 	free(str);
 	free(s2);
 	free(s1);	
@@ -210,9 +211,9 @@ void en_display(const char * str, int len)
 
 void decrypt(const char * s)
 {
-	/*»ñÈ¡×Ö·û´®³¤¶È*/
+	/*è·å–å­—ç¬¦ä¸²é•¿åº¦*/
 	int len=strlen(s);
-	/*µÚÒ»²ã½âÂë*/
+	/*ç¬¬ä¸€å±‚è§£ç */
 	int len1=len/6;
 	char arrMC_Seg[7];
 	
@@ -229,7 +230,7 @@ void decrypt(const char * s)
 		s+=6;
 	}	
 
-	/*µÚ¶ş²ã½âÂë*/	
+	/*ç¬¬äºŒå±‚è§£ç */	
 	int len2=len1/2;
 	char * s2=(char*)malloc(len2);
 	char arr2[3];
@@ -243,14 +244,14 @@ void decrypt(const char * s)
 		*(s2+i)=de_conv2(arr2);		
 	}
 
-	/*µÚÈı²ã½âÂë*/	
+	/*ç¬¬ä¸‰å±‚è§£ç */	
 	char *s3=(char*)malloc(len2);
 	for (i=0;i<len2;i++)
 	{
 		*(s3+i)=de_conv3(*(s2+i));		
 	}
 
-	/*µÚËÄ²ã½âÂë*/
+	/*ç¬¬å››å±‚è§£ç */
 	char *s4=(char *)malloc(len2);
 	int len4_1=(len2+1)/2;
 	int len4_2=len2-len4_1;
@@ -264,8 +265,8 @@ void decrypt(const char * s)
 	}
 
 	/*
-	 *µÚÎå²ã½âÂë
-	 *µ¹ÖÃÊä³ö
+	 *ç¬¬äº”å±‚è§£ç 
+	 *å€’ç½®è¾“å‡º
 	 */
 	de_display(s4, len2);
 	
@@ -275,7 +276,7 @@ void decrypt(const char * s)
 	free(s1);
 }
 
-/*Ä¦Ë¹Âëµ½Êı×Ö*/
+/*æ‘©æ–¯ç åˆ°æ•°å­—*/
 char de_conv1(const char * str)
 {
 	for (int i=0;i<9;i++)
@@ -287,7 +288,7 @@ char de_conv1(const char * str)
 	}
 	return 0;
 }
-/*ÊÖ»ú9¼üÅÌ½âÂë£¬Êı×Öµ½×ÖÄ¸*/
+/*æ‰‹æœº9é”®ç›˜è§£ç ï¼Œæ•°å­—åˆ°å­—æ¯*/
 char de_conv2(const char * str)
 {
 	for (int i=0;i<26;i++)
@@ -298,7 +299,7 @@ char de_conv2(const char * str)
 		}
 	}
 }
-/*±ê×¼QWERT¼üÅÌ½âÂë£¬×ÖÄ¸µ½×ÖÄ¸*/
+/*æ ‡å‡†QWERTé”®ç›˜è§£ç ï¼Œå­—æ¯åˆ°å­—æ¯*/
 char de_conv3(char c)
 {
 	for (int i=0;i<26;i++)
