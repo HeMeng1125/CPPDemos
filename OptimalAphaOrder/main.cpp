@@ -7,6 +7,7 @@
 #include <chrono>
 #include <random>
 #include <future>
+#include <iterator>
 #include <assert.h>
 
 typedef std::map<char, int> alphabet_t;
